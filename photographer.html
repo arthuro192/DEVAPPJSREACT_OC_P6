@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="node_modules\simplelightbox\dist\simple-lightbox_custom.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Fisheye - photographe </title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
+      </a>
+    </header>
+    <main>
+      <section class="photographer_header">
+      </section>
+      <div class="medias_filters">
+      </div>
+    </main>
+    <div id="contact_modal" aria-labelledby="contact_title" aria-hidden="true">
+			<div class="modal">
+				<header class="modal_header">
+          <h1 id="contact_title">Contactez-moi<br></h1>
+        </header>
+				<form method="get" action="">
+						<label for="first_name">Prénom</label>
+						<input type="text" name="first_name" id="first_name" required/>
+            <label for="last_name">Nom</label>
+						<input type="text" name="last_name" id="last_name" required/>
+            <label for="email">Email</label>
+						<input type="email" name="email" id="email" required/>
+            <label for="your_message">Votre message</label>
+						<textarea name="your_message" id="your_message" required></textarea>
+            <button class="btn_red">Envoyer</button>
+				</form>
+        <button id="modal_x" aria-label="Fermer formulaire contact" onclick="closeModal()">×</button>
+			</div>
+		</div>
+    <script src="/node_modules/simplelightbox/dist/simple-lightbox.js"></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+  </body>
+</html>
