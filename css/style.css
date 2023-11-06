@@ -1,0 +1,293 @@
+
+/* GENERAL ######################################################################################################################################################### */
+
+/* FONTS ####################################################################### */
+
+* {
+    font-family: "DM Sans", sans-serif;
+}
+h1, h2 {
+    font-weight: 400;
+}
+.photographer_place {
+    font-size: 18px;
+    color: var(--red_01);
+}
+.photographer_tagline {
+    font-size: 18px;
+}
+.photographer_price {
+    font-size: 18px;
+    color: var(--grey_01);
+}
+.userpage_red_txt {
+    font-size: 24px;
+    color: var(--red_01);
+}
+.userpage_tagline {
+    font-size: 18px;
+    color: var(--grey_02);
+}
+
+/* COLORS ###################################################################### */
+
+:root {
+    --red_01: #901C1C;
+    --red_02: #DB8876;
+    --orange_01: #D3573C;
+    --grey_01: #757575;
+    --grey_02: #525252;
+}
+
+body *:focus, .simple-lightbox *:focus, #contact_modal *:focus {
+    border: 5px solid #023e8a;
+    box-sizing: border-box;
+}
+
+/* COMMON ###################################################################### */
+
+body * {
+    border-radius: 5px;
+    margin: 0px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    margin: 0 100px;
+
+}
+header h1 {
+    font-size: 36px;
+    color: var(--red_01);
+}
+.logo {
+    height: 50px;
+}
+.photographer {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+/* INDEX.HTML ###################################################################################################################################################### */
+
+/* PHOTOGRAPHERS_CARDS ######################################################### */
+
+.photographers_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100px;
+    gap: 70px;
+}
+.photographers_cards article a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+.photographers_cards article a h2 {
+    font-size: 36px;
+    margin-bottom: 0px;
+    color: var(--orange_01);
+}
+.photographers_cards article p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    gap: 0px;
+}
+
+/* PHOTOGRAPHER.HTML ############################################################################################################################################### */
+
+/* PHOTOGRAPHER_HEADER ######################################################### */
+
+.photographer_header * {
+    margin: 0px;
+    padding: 0px;
+}
+.photographer_header {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    gap: 0px;
+    height: 300px;
+    margin: 0 100px;
+    background-color: #FAFAFA;
+}
+.btn_red {
+    position: relative;
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    cursor: pointer;
+    grid-column-start: 3;
+}
+.photographer_header div {
+    margin: auto;
+    order: -1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.photographer_header div h1 {
+    font-size: 64px;
+    color: var(--orange_01);
+}
+.photographer_header img {
+    position: relative;
+    margin: auto;
+    grid-column-start: 5;
+}
+.additional_infos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    right: 40px;
+    bottom: 0px;
+    width: 376px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: 500;
+    z-index: 1;
+    background: var(--red_02);
+}
+
+/* MEDIAS_FILTER ############################################################### */
+
+.medias_filters {
+    margin: 50px 0px 50px 100px;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* .medias_filters select {
+    margin-left: 10px;
+} */
+
+.medias_filters select {
+    margin-left: 10px;
+}
+
+.medias_filters select option {
+    margin-left: 10px;
+}
+
+/* MEDIAS_PHOTOGRAPHER ######################################################### */
+
+.medias_photographer {
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    gap: 50px;
+    height: 300px;
+    margin: 0 100px;
+    background-color: #FAFAFA;
+}
+.medias_photographer img, .medias_photographer video {
+    width: 350px;
+    height: 351px;
+    position: relative;
+    margin: auto;
+    object-fit: cover;
+    box-sizing: border-box;
+
+}
+.medias_photographer article p {
+    position: absolute;
+    width: 350px;
+    margin-top: 0px;
+}
+.medias_photographer article p span {
+    position: absolute;
+    right: 30px;
+}
+.medias_photographer article p i {
+    position: absolute;
+    right: 0px;
+    padding-top: 4px;
+    cursor: pointer;
+}
+.medias_photographer article a {
+    display: block;
+}
+
+/* MODAL ####################################################################### */
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.modal {
+    position: relative;
+    width: 50%;
+    padding: 35px;
+    background-color: #DB8876;
+}
+.modal_header {
+    position: relative;
+    margin: 20px 0px 50px 0px;
+}
+.modal_header h1 {
+    font-size: 64px;
+    color: black;
+}
+#modal_x {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+  line-height: 0px;
+  font-size: 100px;
+  border: none;
+  color: black;
+  background: inherit;
+}
+.modal_header img {
+    position: absolute;
+    cursor: pointer;
+    right: 0px;
+    top: 0px;
+}
+.modal label, .modal p {
+    font-size: 36px;
+    color: #312E2E;
+}
+.modal input {
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    font-size: 36px;
+}
+#your_message {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+/* LIGHTBOX #################################################################### */
+
+.simple-lightbox {
+    background: white;
+}
+
+/* SEARCH_AND_FILTERS ############################################################################################################################################## */
+/* INTRO_BAR ################################################################### */
+/* NOTES ########################################################################################################################################################### */
+/* FONTS ####################################################################### */
