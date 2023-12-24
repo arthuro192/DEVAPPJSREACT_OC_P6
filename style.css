@@ -1,7 +1,7 @@
 
 /* GENERAL ######################################################################################################################################################### */
 
-/* FONTS ####################################################################### */
+/* FONTS ######################################################################## */
 
 * {
     font-family: "DM Sans", sans-serif;
@@ -304,16 +304,16 @@ header h1 {
     display: none;
     transform: inherit;
 }
-.light_prev, .light_next {
+.btn_prev, .btn_next {
     width: 80px;
     height: 160px;
     min-width: 80px;
     background: url(assets/icons/Prev_next.svg) center no-repeat;
 }
-.light_next {
+.btn_next {
     transform: rotate(180deg);
 }
-.light_close {
+.btn_close {
     position: absolute;
     top: -5px;
     right: -80px;
@@ -322,16 +322,16 @@ header h1 {
     z-index: 1;
     background: url(assets/icons/Close.svg) center/50% no-repeat;
 }
-.div_img {
+.light_media {
     position: relative;
 }
-.div_img img {
+.light_media img, .light_media video {
     min-width: 150px;
     max-width: 100%;
     min-height: 100px;
     max-height: 90vh;
 }
-.lightbox p {
+.light_media p {
     font-size: 24px;
     color: #901C1C;
 }
@@ -353,12 +353,12 @@ header h1 {
 
 @media (max-width: 700px) {
 
-    .light_close {
+    .btn_close {
         right: -70px;
         width: 70px;
         height: 70px;
     }
-    .light_prev, .light_next {
+    .btn_prev, .btn_next {
         width: 70px;
         height: 140px;
         min-width: 70px;
@@ -367,12 +367,12 @@ header h1 {
 }
 @media (max-width: 600px) {
 
-    .light_close {
+    .btn_close {
         right: -60px;
         width: 60px;
         height: 60px;
     }
-    .light_prev, .light_next {
+    .btn_prev, .btn_next {
         width: 60px;
         height: 120px;
         min-width: 60px;
@@ -381,12 +381,12 @@ header h1 {
 }
 @media (max-width: 500px) {
 
-    .light_close {
+    .btn_close {
         right: -50px;
         width: 50px;
         height: 50px;
     }
-    .light_prev, .light_next {
+    .btn_prev, .btn_next {
         width: 50px;
         height: 100px;
         min-width: 50px;
@@ -395,12 +395,12 @@ header h1 {
 }
 @media (max-width: 400px) {
 
-    .light_close {
+    .btn_close {
         right: -40px;
         width: 40px;
         height: 40px;
     }
-    .light_prev, .light_next {
+    .btn_prev, .btn_next {
         width: 40px;
         height: 80px;
         min-width: 40px;
@@ -411,12 +411,12 @@ header h1 {
 }
 @media (max-width: 300px) {
 
-    .light_close {
+    .btn_close {
         right: -30px;
         width: 30px;
         height: 30px;
     }
-    .light_prev, .light_next {
+    .btn_prev, .btn_next {
         width: 30px;
         height: 60px;
         min-width: 30px;

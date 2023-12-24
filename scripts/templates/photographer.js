@@ -92,13 +92,11 @@ export function mediaTemplate(data) {
 
         }
 
-
         if (data.video) {
 
             const media_video = `
                 <a href="${path_video}" aria-label="Close up view">
-                    <video controls>
-                        <source src="${path_video}" title ="${title}"/>
+                    <video src="${path_video}" title ="${title}" controls>
                     </video>
                 </a>
                 <p class="userpage_red_txt">
@@ -121,4 +119,3 @@ export function mediaTemplate(data) {
     return {getMediaCardDOM}
 
 }
-

@@ -113,53 +113,105 @@ let sort_by = document.getElementById("sort_by");
 
 // LIGHTBOX #######################################################################
 
-function lightbox() {
+let medias_light = Array.from(document.querySelectorAll("a[aria-label='Close up view'] *"));
+let medias_nodes = medias_light.map(media_light => media_light.outerHTML);
+let lightbox = {
 
-    let lightbox = new SimpleLightbox('.medias_photographer a', {
+    init: function() {
 
-        showCounter : false,
-        captionsData: 'title',
-        alertErrorMessage: "Ceci est une vidéo. Veuillez utiliser l'icône 'plein écran' des commandes intégrées à la miniature de la vidéo en question svp."
+        medias_light.forEach((media) => {
 
-    });
+            media.addEventListener("click", (e) => {
 
-    lightbox.on('shown.simplelightbox', function () {
+                e.preventDefault();
+                let media_node = e.target.outerHTML;
+                let title = e.target.title;
+                let current_light = this.dom_html(media_node, title);
+                document.body.appendChild(current_light);
 
-        let wrapper_light = document.querySelector(".sl-wrapper");
-        wrapper_light.setAttribute("aria-label","image_closeup_view");
+            });
 
-        let close_light = document.querySelector(".sl-close");
-        close_light.setAttribute("aria-label", "close_dialog");
+        });
 
-        let prev_light = document.querySelector(".sl-prev");
-        prev_light.setAttribute("aria-label", "previous_image");
+    },
 
-        let next_light = document.querySelector(".sl-next");
-        next_light.setAttribute("aria-label", "next_image");
+    dom_html: function(media_node, title) {
 
-        let div_img_light = document.querySelector(".sl-image");
-        div_img_light.setAttribute("aria-label", "image");
-        wrapper_light.insertBefore(div_img_light,close_light);
-        div_img_light.setAttribute("tabindex", "0");
+        let div_light = document.createElement("div");
+        div_light.classList.add("lightbox");
+        div_light.innerHTML = `
+        <button class="btn_prev">
+            <p>Précédent</p>
+        </button>
+        <div class="light_media">
+            <div class="current_media">${media_node}</div>
+            <p>${title}</p>
+            <button class="btn_close">
+                <p>Fermer</p>
+            </button>
+        </div>
+        <button class="btn_next">
+            <p>Suivant</p>
+        </button>
+        `;
 
-        let nav_light = document.querySelector(".sl-navigation");
-        wrapper_light.insertBefore(nav_light,close_light);
+        let btn_close = div_light.querySelector(".btn_close");
+        btn_close.addEventListener("click", () => {
 
-        let img_light = document.querySelector(".sl-image img");
-        let imgs = document.querySelectorAll("article img");
-        imgs.forEach((img) => {
+            div_light.remove();
 
-            if (img_light.src == img.src) {
-                img_light.alt = img.alt;
-            }
+        })
+        let btn_prev = div_light.querySelector(".btn_prev");
+        btn_prev.addEventListener("click", () => {
+
+            this.navigation("prev");
+
+        })
+        let btn_next = div_light.querySelector(".btn_next");
+        btn_next.addEventListener("click", () => {
+
+            this.navigation("next");
 
         })
 
-    });
+        return div_light;
 
-}
+    },
 
-lightbox();
+    navigation: function(param) {
+
+        let current_media = document.querySelector(".current_media");
+        let current_i = medias_nodes.findIndex(media_node => media_node == current_media.firstElementChild.outerHTML);
+        let new_media;
+        let new_title;
+
+        if (param == "prev") {
+
+            if (current_i == 0) {
+                current_i = medias_nodes.length;
+            }
+            new_media = medias_light[current_i - 1].outerHTML;
+            new_title = medias_light[current_i - 1].title;
+
+        } else if (param == "next") {
+
+            if (current_i == medias_nodes.length - 1) {
+                current_i = -1;
+            }
+            new_media = medias_light[current_i + 1].outerHTML;
+            new_title = medias_light[current_i + 1].title;
+
+        }
+
+        current_media.innerHTML = new_media;
+        current_media.nextElementSibling.innerHTML = new_title;
+
+    }
+
+};
+
+lightbox.init();
+lightbox.dom_html();
 
 // MEDIA_LIKES ####################################################################
 
@@ -231,3 +283,6 @@ function total_likes() {
 
 total_likes()
 
+// ?????_????? ########################################################################################################################################################
+
+// TESTS_OK #####################################################################
