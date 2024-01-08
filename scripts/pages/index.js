@@ -1,3 +1,4 @@
+
 import {photographerTemplate} from "../templates/photographer.js";
 
     // FONCTION QUI RÉCUPÈRE TOUS LES OBJETS PHOTOGRAPHES & MEDIAS AINSI QUE TOUTES LEUR PROPRIÉTÉS.

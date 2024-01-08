@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -6,7 +7,8 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e58b5dda6a.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> -->
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js" defer></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -21,8 +23,9 @@
       <div class="medias_filters">
       </div>
     </main>
-    <div id="contact_modal" aria-labelledby="contact_title" aria-hidden="true">
+    <div id="contact_modal" role="dialog" aria-labelledby="contact_title" aria-hidden="true">
 			<div class="modal">
+        <button id="modal_x" aria-label="Fermer formulaire contact" onclick="closeModal()">×</button>
 				<header class="modal_header">
           <h1 id="contact_title">Contactez-moi<br></h1>
         </header>
@@ -37,10 +40,7 @@
 						<textarea name="your_message" id="your_message" required></textarea>
             <button class="btn_red">Envoyer</button>
 				</form>
-        <button id="modal_x" aria-label="Fermer formulaire contact" onclick="closeModal()">×</button>
 			</div>
     </div>
-    <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

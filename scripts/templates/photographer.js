@@ -1,3 +1,4 @@
+
 export function photographerTemplate(data) {
 
     const {name, id, city, country, tagline, price, portrait} = data;
@@ -96,7 +97,7 @@ export function mediaTemplate(data) {
 
             const media_video = `
                 <a href="${path_video}" aria-label="Close up view">
-                    <video src="${path_video}" title ="${title}" controls>
+                    <video src="${path_video}" title ="${title}" controls tabindex="0">
                     </video>
                 </a>
                 <p class="userpage_red_txt">

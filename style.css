@@ -39,7 +39,7 @@ h1, h2 {
     --grey_02: #525252;
 }
 
-body *:focus, .simple-lightbox *:focus, #contact_modal *:focus {
+body *:focus, .lightbox *:focus, #contact_modal *:focus {
     border: 5px solid #023e8a;
     box-sizing: border-box;
 }
@@ -237,6 +237,19 @@ header h1 {
     padding: 35px;
     background-color: #DB8876;
 }
+#modal_x {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+    line-height: 0px;
+    font-size: 100px;
+    border: none;
+    color: black;
+    background: inherit;
+  }
 .modal_header {
     position: relative;
     margin: 20px 0px 50px 0px;
@@ -245,26 +258,13 @@ header h1 {
     font-size: 64px;
     color: black;
 }
-#modal_x {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  width: 60px;
-  height: 60px;
-  z-index: 1;
-  line-height: 0px;
-  font-size: 100px;
-  border: none;
-  color: black;
-  background: inherit;
-}
-.modal_header img {
+/* .modal_header img {
     position: absolute;
     cursor: pointer;
     right: 0px;
     top: 0px;
-}
-.modal label {
+} */
+.modal label, .modal p {
     font-size: 36px;
     color: #312E2E;
 }
@@ -300,9 +300,15 @@ header h1 {
     cursor: pointer;
     border: none;
 }
+.lightbox h1 {
+    display: none;
+}
 .lightbox button p {
     display: none;
     transform: inherit;
+}
+.btn_prev {
+    order: 1
 }
 .btn_prev, .btn_next {
     width: 80px;
@@ -311,6 +317,7 @@ header h1 {
     background: url(assets/icons/Prev_next.svg) center no-repeat;
 }
 .btn_next {
+    order: 3;
     transform: rotate(180deg);
 }
 .btn_close {
@@ -324,12 +331,17 @@ header h1 {
 }
 .light_media {
     position: relative;
+    order: 2;
+}
+.current_media {
+    order: 2;
 }
 .light_media img, .light_media video {
     min-width: 150px;
     max-width: 100%;
     min-height: 100px;
     max-height: 90vh;
+    order: 2;
 }
 .light_media p {
     font-size: 24px;

@@ -3,8 +3,8 @@ function openModal() {
     const modal = document.getElementById("contact_modal");
     modal.setAttribute("aria-hidden", "false");
 	modal.style.display = "flex";
-    const first_name = document.getElementById("first_name");
-    first_name.focus();
+    const modal_x = document.getElementById("modal_x");
+    modal_x.focus();
 }
 
 function closeModal() {
@@ -36,8 +36,20 @@ function prevent_default() {
         Je te répondrai dès que possible.</p>
         `
         h1_modal.innerText = "Message envoyé.";
+        modal_x.focus();
     })
+}
+
+function esc_modal() {
+    let contact_modal = document.getElementById("contact_modal");
+    contact_modal.addEventListener("keydown", (e) => {
+        // Onclick attribute in the HTML (= keyboard key ok for space and enter)
+        if ((e.key === "Escape")) {
+            closeModal()
+        }
+    });
 }
 
 form_log()
 prevent_default()
+esc_modal()
