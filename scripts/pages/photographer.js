@@ -9,10 +9,13 @@ let {media} = await getPhotographers();
 let url_params = new URL(document.location).searchParams;
 let url_id = parseInt(url_params.get("id"));
 
-let mainPhotograph = document.querySelector("main");
 let headerPhotograph = document.querySelector("header");
+headerPhotograph.setAttribute("aria-hidden", "false");
+let mainPhotograph = document.querySelector("main");
+mainPhotograph.setAttribute("aria-hidden", "false");
 let sectionPhotograph = document.createElement('section');
 sectionPhotograph.classList.add("medias_photographer");
+
 mainPhotograph.appendChild(sectionPhotograph)
 
 // PHOTOGRAPHER_FORM ##############################################################
@@ -96,8 +99,8 @@ function sort_id_medias() {
 
     sectionPhotograph.innerHTML = "";
     display_media(sort_medias);
-    // lightbox();
-    media_likes();
+    lightbox.init(mainPhotograph, headerPhotograph);
+    // media_likes();
 
 }
 
@@ -107,18 +110,18 @@ let sort_by = document.getElementById("sort_by");
     sort_by.addEventListener(event_type, (e) => {
 
         if ((event_type === "click") || (e.key === "Enter")) {
-            sort_id_medias()
-        }
 
+            sort_id_medias();
+
+        };
 
     });
 
-})
+});
 
 // LIGHTBOX #######################################################################
 
-let medias_light = Array.from(document.querySelectorAll("a[aria-label='Close up view'] *"));
-lightbox.init(mainPhotograph, headerPhotograph, medias_light);
+lightbox.init(mainPhotograph, headerPhotograph);
 
 // MEDIA_LIKES ####################################################################
 

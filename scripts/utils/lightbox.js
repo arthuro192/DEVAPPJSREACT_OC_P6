@@ -1,20 +1,39 @@
 
 export let lightbox = {
 
-    init: function(mainPhotograph, headerPhotograph, medias_light) {
+    init: function(mainPhotograph, headerPhotograph) {
+
+        let medias_light = Array.from(document.querySelectorAll("a[aria-label='Close up view']"));
 
         medias_light.forEach((media) => {
 
-            media.addEventListener("click", (e) => {
+            ["keydown", "click"].forEach((event_type) => {
 
-                e.preventDefault();
-                let media_node = e.target.outerHTML;
-                let title = e.target.title;
-                let current_light = this.dom_html(media_node, title, mainPhotograph, headerPhotograph, medias_light);
-                document.body.appendChild(current_light);
-                mainPhotograph.setAttribute("aria-hidden", "true");
-                headerPhotograph.setAttribute("aria-hidden", "true");
-                document.querySelector(".btn_close").focus();
+                media.addEventListener(event_type, (e) => {
+
+                    if ((event_type === "click") || (e.key === "Enter")) {
+
+                        e.preventDefault();
+                        let media_node;
+                        let title;
+
+                        if (event_type === "click") {
+                            media_node = e.target.outerHTML;
+                            title = e.target.title
+                        } else if (e.key === "Enter") {
+                            media_node = e.target.firstElementChild.outerHTML;
+                            title = e.target.firstElementChild.title
+                        }
+
+                        let current_light = this.dom_html(media_node, title, mainPhotograph, headerPhotograph, medias_light);
+                        document.body.appendChild(current_light);
+                        mainPhotograph.setAttribute("aria-hidden", "true");
+                        headerPhotograph.setAttribute("aria-hidden", "true");
+                        document.querySelector(".btn_close").focus();
+
+                    }
+
+                });
 
             });
 
@@ -98,7 +117,7 @@ export let lightbox = {
 
     navigation: function(param, medias_light) {
 
-        let medias_nodes = medias_light.map(media_light => media_light.outerHTML);
+        let medias_nodes = medias_light.map(media_light => media_light.firstElementChild.outerHTML);
         let current_media = document.querySelector(".current_media");
         let current_i = medias_nodes.findIndex(media_node => media_node == current_media.firstElementChild.outerHTML);
         let new_media;
@@ -110,15 +129,15 @@ export let lightbox = {
                 if (current_i == 0) {
                     current_i = medias_nodes.length;
                 }
-                new_media = medias_light[current_i - 1].outerHTML;
-                new_title = medias_light[current_i - 1].title;
+                new_media = medias_light[current_i - 1].firstElementChild.outerHTML;
+                new_title = medias_light[current_i - 1].firstElementChild.title;
                 break;
             case "next" :
                 if (current_i == medias_nodes.length - 1) {
                     current_i = -1;
                 }
-                new_media = medias_light[current_i + 1].outerHTML;
-                new_title = medias_light[current_i + 1].title;
+                new_media = medias_light[current_i + 1].firstElementChild.outerHTML;
+                new_title = medias_light[current_i + 1].firstElementChild.title;
                 break;
 
         }
