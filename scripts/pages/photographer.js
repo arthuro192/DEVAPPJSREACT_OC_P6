@@ -1,10 +1,10 @@
 
-import {getPhotographers} from "./index.js";
+import {get_users_medias} from "./index.js";
 import * as template from "../templates/photographer.js";
 import {lightbox} from "../utils/lightbox.js";
 
-let {photographers} = await getPhotographers();
-let {media} = await getPhotographers();
+let {photographers} = await get_users_medias();
+let {medias} = await get_users_medias();
 
 let url_params = new URL(document.location).searchParams;
 let url_id = parseInt(url_params.get("id"));
@@ -43,7 +43,7 @@ photographers.forEach((photographer) => {
     if (photographer.id == url_id) {
 
         let photographerModel = template.photographerTemplate(photographer);
-        let userPageDOM = photographerModel.getUserPageDOM();
+        photographerModel.getUserPageDOM();
 
     }
 
@@ -52,8 +52,7 @@ photographers.forEach((photographer) => {
 // PHOTOGRAPHER_MEDIA_ARRAY #######################################################
 
 let id_medias = [];
-
-media.forEach((media_unit) => {
+medias.forEach((media_unit) => {
 
     if (media_unit.photographerId == url_id) {
 
@@ -100,7 +99,7 @@ function sort_id_medias() {
     sectionPhotograph.innerHTML = "";
     display_media(sort_medias);
     lightbox.init(mainPhotograph, headerPhotograph);
-    // media_likes();
+    media_likes();
 
 }
 
@@ -113,7 +112,7 @@ let sort_by = document.getElementById("sort_by");
 
             sort_id_medias();
 
-        };
+        }
 
     });
 
@@ -134,31 +133,32 @@ function media_likes() {
 
             let span_media_likes = ico_likes.previousElementSibling;
             let media_likes_origin = Number(span_media_likes.textContent)
-
             ico_likes.addEventListener((event_type), (e) => {
 
                 let media_likes_new = Number(span_media_likes.textContent)
 
-                    if ((media_likes_origin == media_likes_new) && 
-                        // ((event_type === "keydown" && e.key === "Enter") ||
-                        // (event_type === "click"))) {
-                            ((event_type === "click") ||
-                            (e.key === "Enter"))) {
+                if ((media_likes_origin == media_likes_new) && 
+                    ((event_type === "click") ||
+                    (e.key === "Enter"))) {
 
-                            media_likes_new++
-                            span_media_likes.innerText = media_likes_new
+                        media_likes_new++
+                        span_media_likes.innerText = media_likes_new
 
-                    } else if (media_likes_origin == (media_likes_new - 1)) {
+                    } else if ((media_likes_origin == (media_likes_new - 1)) && 
+                        ((event_type === "click") ||
+                        (e.key === "Enter"))) {
 
-                            media_likes_new--
-                            span_media_likes.innerText = media_likes_new
+                        media_likes_new--
+                        span_media_likes.innerText = media_likes_new
 
                     }
 
                 id_medias.forEach((id_media) => {
 
                     if (span_media_likes.previousSibling.textContent.includes(id_media.title)) {
+
                         id_media.likes = media_likes_new
+
                     }
                 
                 })

@@ -21,7 +21,6 @@ export function photographerTemplate(data) {
             </p>
         `
         article.innerHTML = user_card
-
         return (article);
 
     }
@@ -66,7 +65,7 @@ export function photographerTemplate(data) {
 
 export function mediaTemplate(data) {
 
-    const {id, photographerId, title, image, alt_image, video, likes, date, price} = data;
+    const {photographerId, title, image, alt_image, video, likes} = data;
     const path_img = `assets/medias/ID_${photographerId}/${image}`;
     const path_video = `assets/medias/ID_${photographerId}/${video}`;
 
