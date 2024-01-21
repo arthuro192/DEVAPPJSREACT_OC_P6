@@ -4,7 +4,6 @@ export let lightbox = {
     init: function(mainPhotograph, headerPhotograph) {
 
         let medias_light = Array.from(document.querySelectorAll("a[aria-label='Close up view']"));
-
         medias_light.forEach((media) => {
 
             ["keydown", "click"].forEach((event_type) => {

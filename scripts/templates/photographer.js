@@ -39,21 +39,12 @@ export function photographerTemplate(data) {
                     <p>${price}€/jour</p>
                 </div> 
             </div>
-            <button class="btn_red" onclick="openModal()">
+            <button class="btn_red">
                 Contactez-moi
             </button>
             <img class="photographer" src="${picture}" alt="Portrait représentant le ou la photographe : ${name}">
         `
         photographer_header.innerHTML = user_page
-
-        // PHOTOGRAPHER_NAME_MODAL ################################################
-
-        const h1_modal = document.querySelector(".modal h1")
-        const name_modal = document.createElement('span');
-        name_modal.innerHTML = `${name}`
-        h1_modal.appendChild(name_modal);
-
-        // PHOTOGRAPHER_NAME_MODAL ################################################
 
         return (photographer_header)
 

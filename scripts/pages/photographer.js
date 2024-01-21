@@ -2,6 +2,7 @@
 import {get_users_medias} from "./index.js";
 import * as template from "../templates/photographer.js";
 import {lightbox} from "../utils/lightbox.js";
+import {contact_form} from "../utils/contact_form.js";
 
 let {photographers} = await get_users_medias();
 let {medias} = await get_users_medias();
@@ -18,7 +19,24 @@ sectionPhotograph.classList.add("medias_photographer");
 
 mainPhotograph.appendChild(sectionPhotograph)
 
-// PHOTOGRAPHER_FORM ##############################################################
+// PHOTOGRAPHER_INFOS #############################################################
+
+photographers.forEach((photographer) => {
+
+    if (photographer.id == url_id) {
+
+        let photographerModel = template.photographerTemplate(photographer);
+        photographerModel.getUserPageDOM();
+
+    }
+
+});
+
+// CONTACT_FORM ###################################################################
+
+contact_form.init(mainPhotograph, headerPhotograph);
+
+// MEDIAS_FILTERS #################################################################
 
 let div_filter = document.querySelector(".medias_filters");
 let form = document.createElement('form');
@@ -35,48 +53,6 @@ form.innerHTML = `
 `
 
 div_filter.appendChild(form)
-
-// PHOTOGRAPHER_INFO ##############################################################
-
-photographers.forEach((photographer) => {
-
-    if (photographer.id == url_id) {
-
-        let photographerModel = template.photographerTemplate(photographer);
-        photographerModel.getUserPageDOM();
-
-    }
-
-});
-
-// PHOTOGRAPHER_MEDIA_ARRAY #######################################################
-
-let id_medias = [];
-medias.forEach((media_unit) => {
-
-    if (media_unit.photographerId == url_id) {
-
-        id_medias.push(media_unit)
-
-    }
-
-});
-
-// PHOTOGRAPHER_MEDIA_DISPLAY #####################################################
-
-function display_media(medias) {
-
-    medias.forEach((media) => {
-
-        let mediaModel = template.mediaTemplate(media);
-        let mediaCardDOM = mediaModel.getMediaCardDOM();
-        sectionPhotograph.appendChild(mediaCardDOM);
-
-    });
-
-}
-
-display_media(id_medias)
 
 // MEDIAS_SORT ###################################################################
 
@@ -117,6 +93,35 @@ let sort_by = document.getElementById("sort_by");
     });
 
 });
+
+// PHOTOGRAPHER_MEDIAS_ARRAY #######################################################
+
+let id_medias = [];
+medias.forEach((media_unit) => {
+
+    if (media_unit.photographerId == url_id) {
+
+        id_medias.push(media_unit)
+
+    }
+
+});
+
+// PHOTOGRAPHER_MEDIAS_DISPLAY #####################################################
+
+function display_media(medias) {
+
+    medias.forEach((media) => {
+
+        let mediaModel = template.mediaTemplate(media);
+        let mediaCardDOM = mediaModel.getMediaCardDOM();
+        sectionPhotograph.appendChild(mediaCardDOM);
+
+    });
+
+}
+
+display_media(id_medias)
 
 // LIGHTBOX #######################################################################
 

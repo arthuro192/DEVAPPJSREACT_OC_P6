@@ -7,7 +7,6 @@
         <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/e58b5dda6a.js" crossorigin="anonymous"></script>
         <script type="module" src="/scripts/pages/photographer.js"></script>
-        <script src="/scripts/utils/contactForm.js" defer></script>
         <title>Fisheye - photographe </title>
     </head>
     <body>
@@ -22,26 +21,5 @@
             <div class="medias_filters">
             </div>
         </main>
-        <div id="contact_modal" role="dialog" aria-labelledby="contact_title" aria-hidden="true">
-            <div class="modal">
-                <button id="modal_x" aria-label="Fermer formulaire contact" onclick="closeModal()">×</button>
-                <header class="modal_header">
-                    <h1 id="contact_title">
-                        Contactez-moi<br>
-                    </h1>
-                </header>
-                <form method="get" action="">
-                    <label for="first_name">Prénom</label>
-                    <input type="text" name="first_name" id="first_name" required>
-                    <label for="last_name">Nom</label>
-                    <input type="text" name="last_name" id="last_name" required>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required>
-                    <label for="your_message">Votre message</label>
-                    <textarea name="your_message" id="your_message" required></textarea>
-                    <button class="btn_red">Envoyer</button>
-                </form>
-            </div>
-        </div>
     </body>
 </html>

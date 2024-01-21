@@ -221,8 +221,8 @@ header h1 {
 
 /* MODAL ####################################################################### */
 
-#contact_modal {
-    display: none;
+#modal {
+    display: flex;
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -237,7 +237,7 @@ header h1 {
     padding: 35px;
     background-color: #DB8876;
 }
-#modal_x {
+.modal_x {
     position: absolute;
     top: 20px;
     right: 35px;
@@ -258,12 +258,6 @@ header h1 {
     font-size: 64px;
     color: black;
 }
-/* .modal_header img {
-    position: absolute;
-    cursor: pointer;
-    right: 0px;
-    top: 0px;
-} */
 .modal label, .modal p {
     font-size: 36px;
     color: #312E2E;
