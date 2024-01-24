@@ -54,6 +54,42 @@ form.innerHTML = `
 
 div_filter.appendChild(form)
 
+// PHOTOGRAPHER_MEDIAS_ARRAY #######################################################
+
+let id_medias = [];
+medias.forEach((media_unit) => {
+
+    if (media_unit.photographerId == url_id) {
+
+        id_medias.push(media_unit)
+
+    }
+
+});
+
+id_medias.sort(function (a, b) {
+
+    // INVERSER LES VALEURS A & B POUR UN TRI CROISSANT.
+    return b.likes - a.likes;
+
+});
+
+// PHOTOGRAPHER_MEDIAS_DISPLAY #####################################################
+
+function display_media(medias) {
+
+    medias.forEach((media) => {
+
+        let mediaModel = template.mediaTemplate(media);
+        let mediaCardDOM = mediaModel.getMediaCardDOM();
+        sectionPhotograph.appendChild(mediaCardDOM);
+
+    });
+
+}
+
+display_media(id_medias)
+
 // MEDIAS_SORT ###################################################################
 
 function sort_id_medias() {
@@ -94,35 +130,6 @@ let sort_by = document.getElementById("sort_by");
 
 });
 
-// PHOTOGRAPHER_MEDIAS_ARRAY #######################################################
-
-let id_medias = [];
-medias.forEach((media_unit) => {
-
-    if (media_unit.photographerId == url_id) {
-
-        id_medias.push(media_unit)
-
-    }
-
-});
-
-// PHOTOGRAPHER_MEDIAS_DISPLAY #####################################################
-
-function display_media(medias) {
-
-    medias.forEach((media) => {
-
-        let mediaModel = template.mediaTemplate(media);
-        let mediaCardDOM = mediaModel.getMediaCardDOM();
-        sectionPhotograph.appendChild(mediaCardDOM);
-
-    });
-
-}
-
-display_media(id_medias)
-
 // LIGHTBOX #######################################################################
 
 lightbox.init(mainPhotograph, headerPhotograph);
@@ -160,7 +167,7 @@ function media_likes() {
 
                 id_medias.forEach((id_media) => {
 
-                    if (span_media_likes.previousSibling.textContent.includes(id_media.title)) {
+                    if (span_media_likes.previousElementSibling.textContent.includes(id_media.title)) {
 
                         id_media.likes = media_likes_new
 
