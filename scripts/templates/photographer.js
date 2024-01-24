@@ -14,7 +14,7 @@ export function photographerTemplate(data) {
                     ${name}
                 </h2>
             </a>
-            <p aria-label="photographer_info">
+            <p aria-label="photographer_info" tabindex="0">
                 <span class="photographer_place">${city}, ${country}</span>
                 <span class="photographer_tagline">${tagline}</span>
                 <span class="photographer_price">${price}€/jour</span>
