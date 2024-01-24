@@ -185,7 +185,7 @@ media_likes()
 function total_likes() {
 
     let photographer_likes = document.querySelector(".photographer_likes")
-    let span_medias_likes = document.querySelectorAll("article p span")
+    let span_medias_likes = document.querySelectorAll("article p span[aria-label='media_likes']")
     let total_likes = 0;
 
     span_medias_likes.forEach((span_media_likes) => {

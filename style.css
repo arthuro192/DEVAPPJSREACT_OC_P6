@@ -183,29 +183,40 @@ header h1 {
 
 /* MEDIAS_PHOTOGRAPHER ######################################################### */
 
+.medias_photographer * {
+    margin: 0%;
+    padding: 0%;
+    /* box-sizing: border-box; */
+}
 .medias_photographer {
     display: grid;
-    grid-template-columns: repeat(3, 33.3%);
-    gap: 50px;
-    height: 300px;
-    margin: 0 100px;
+    grid-template-columns: repeat(3, 1fr);
     background-color: #FAFAFA;
+    /* margin: 0% 5% 0% 5%; */
+    /* gap: 50px; */
 }
-.medias_photographer img, .medias_photographer video {
+.medias_photographer article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.medias_photographer article a * {
     width: 350px;
-    height: 351px;
-    position: relative;
-    margin: auto;
+    height: 300px;
     object-fit: cover;
-    box-sizing: border-box;
-
 }
 .medias_photographer article p {
-    position: absolute;
+    position: relative;
     width: 350px;
-    margin-top: 0px;
+    height: 40px;
 }
-.medias_photographer article p span {
+.medias_photographer article p span[aria-label="media_title"] {
+    position: absolute;
+    width: 260px;
+}
+.medias_photographer article p span[aria-label="media_likes"] {
     position: absolute;
     right: 30px;
 }
@@ -214,9 +225,6 @@ header h1 {
     right: 0px;
     padding-top: 4px;
     cursor: pointer;
-}
-.medias_photographer article a {
-    display: block;
 }
 
 /* MODAL ####################################################################### */

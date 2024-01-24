@@ -71,7 +71,9 @@ export function mediaTemplate(data) {
                     <img src="${path_img}" title ="${title}" alt="${alt_image}">
                 </a>
                 <p class="userpage_red_txt">
-                    ${title}
+                    <span class="userpage_red_txt" aria-label="media_title">
+                        ${title}
+                    </span>
                     <span class="userpage_red_txt" aria-label="media_likes">
                         ${likes}
                     </span>
@@ -91,7 +93,9 @@ export function mediaTemplate(data) {
                     </video>
                 </a>
                 <p class="userpage_red_txt">
-                    ${title}
+                    <span class="userpage_red_txt" aria-label="media_title">
+                        ${title}
+                    </span>
                     <span class="userpage_red_txt" aria-label="media_likes">
                         ${likes}
                     </span>
